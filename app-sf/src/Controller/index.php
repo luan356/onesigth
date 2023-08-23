@@ -16,7 +16,7 @@ public function index(EntityManagerInterface $bd, $cep) :Response{
      $postalCodeController= new PostalCodeController;
      $postalCodeController->getCep($bd, $cep);
 
-return new Response('<h1> '.$cep.'</h1>');
+return new Response();
 
 }
 

@@ -21,12 +21,12 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $response = curl_exec($ch);
 
 if (curl_errno($ch)) {
-    echo 'Erro ao fazer a requisição: ' . curl_error($ch);
+    $msg= 'Erro ao fazer a requisição: ' . curl_error($ch);
 } else {
     $data = json_decode($response, true);
     
-    if (isset($data['erro'])) {
-        echo 'CEP não encontrado';
+    if (isset($data['erro']) || $data == null ) {
+        $msg= 'CEP não encontrado';
     } else {
         $Postalcode = new \App\Entity\Postalcode();
         $Postalcode->setLogradouro($data['logradouro']);
@@ -38,12 +38,10 @@ if (curl_errno($ch)) {
         $bd->flush();//executa em definitivo no banco de dados
         $msg= "PostalCode cadastrado com Sucesso";
 
-        // echo 'Logradouro: ' . $data['logradouro'] . '<br>';
-        // echo 'Bairro: ' . $data['bairro'] . '<br>';
-        // echo 'Cidade: ' . $data['localidade'] . '<br>';
-        // echo 'Estado: ' . $data['uf'] . '<br>';
+       
     }
 }
+echo $msg;
 
 curl_close($ch);
 }
