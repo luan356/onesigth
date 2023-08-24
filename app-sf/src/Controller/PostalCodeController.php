@@ -43,7 +43,7 @@ class PostalCodeController extends AbstractController{
                 // Exibe informações relevantes do CEP na saída
                 
                 $Postalcode = new \App\Entity\Postalcode();
-                // Cria uma nova instância da entidade Postalcode (não está claro se é uma entidade real)
+                // Cria uma nova instância da entidade Postalcode 
                 
                 $Postalcode->setLogradouro($data['logradouro']);
                 $Postalcode->setBairro($data['bairro']);

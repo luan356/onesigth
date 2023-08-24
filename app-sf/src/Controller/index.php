@@ -33,13 +33,13 @@ class index extends AbstractController{
             // Obtem o valor do campo de CEP do formulario
 
             $postalCodeController = new PostalCodeController;
-            // Cria uma instançia da clase PostalCodeController (não está claro se esta é una clase personalizada ou de algum framework)
+            // Cria uma instançia da clase PostalCodeController 
 
             $postalCodeController->getCep($bd, $cepValue);
             // Chama o metodo getCep da instançia criada, passando o EntityManager e o valor do CEP como parâmetros
 
             return new Response();
-            // Retorna una nova Response vazia (isso pode estar incompleto, já que geralmente se deseja retornar algum conteudo)
+            // Retorna una nova Response vazia 
         }
 
         $data['titulo'] = "Consultar Cep";
